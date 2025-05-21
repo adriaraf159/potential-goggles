@@ -1,56 +1,86 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>Confirmação de Presença</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmar Presença 🎂</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f3f3f3;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #ffd6e0, #ffeef7);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
-    .container {
-      background: white;
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      width: 300px;
+
+    .card {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       text-align: center;
-    }
-    input, select, button {
-      margin: 10px 0;
-      padding: 10px;
+      max-width: 350px;
       width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 6px;
     }
+
+    h2 {
+      color: #d63384;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      color: #555;
+      margin-bottom: 1.5em;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      margin-bottom: 1em;
+      font-size: 1em;
+    }
+
     button {
-      background-color: #4CAF50;
+      background-color: #f78fb3;
       color: white;
       border: none;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
+
     button:hover {
-      background-color: #45a049;
+      background-color: #f368e0;
+    }
+
+    .footer {
+      font-size: 0.85em;
+      color: #999;
+      margin-top: 1em;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>Confirme sua Presença</h2>
-    <form action="https://formspree.io/f/{SEU_CODIGO_AQUI}" method="POST">
-      <input type="text" name="nome" placeholder="Seu nome" required>
-      <input type="email" name="email" placeholder="Seu e-mail" required>
+  <div class="card">
+    <h2>🎉 Aniversário de 23 anos!</h2>
+    <p>Confirme sua presença para a nossa comemoração 💕</p>
+
+    <form action="https://formspree.io/f/{SEU_CODIGO}" method="POST">
+      <input type="text" name="nome" placeholder="Seu nome" required />
       <select name="presenca" required>
         <option value="">Você vai comparecer?</option>
-        <option value="Sim">Sim</option>
-        <option value="Não">Não</option>
+        <option value="Sim">Sim! Estarei lá 💃</option>
+        <option value="Não">Infelizmente não 😢</option>
       </select>
       <button type="submit">Confirmar</button>
     </form>
+
+    <div class="footer">Com carinho, te espero lá 💗</div>
   </div>
 </body>
 </html>
+
