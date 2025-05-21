@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Confirmar Presença 🎂</title>
+  <title>Confirmação de Presença 🎉</title>
   <style>
     body {
       margin: 0;
@@ -22,17 +22,18 @@
       border-radius: 20px;
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 350px;
+      max-width: 370px;
       width: 100%;
     }
 
     h2 {
       color: #d63384;
-      margin-bottom: 0.5em;
+      margin-bottom: 0.3em;
     }
 
-    p {
+    .info {
       color: #555;
+      font-size: 0.95em;
       margin-bottom: 1.5em;
     }
 
@@ -66,8 +67,12 @@
 </head>
 <body>
   <div class="card">
-    <h2>🎉 Aniversário de 23 anos!</h2>
-    <p>Confirme sua presença para a nossa comemoração 💕</p>
+    <h2>🎂 Aniversário da Ádria - 23 anos</h2>
+    <div class="info">
+      Dia <strong>07/06/2025</strong> <br />
+      A partir das <strong>20h</strong> <br />
+      Local: <strong>Casa Benjamin</strong>
+    </div>
 
     <form action="https://formspree.io/f/{SEU_CODIGO}" method="POST">
       <input type="text" name="nome" placeholder="Seu nome" required />
@@ -79,8 +84,7 @@
       <button type="submit">Confirmar</button>
     </form>
 
-    <div class="footer">Com carinho, te espero lá 💗</div>
+    <div class="footer">Te espero para comemorar! 💗</div>
   </div>
 </body>
 </html>
-
