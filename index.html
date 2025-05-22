@@ -38,8 +38,6 @@
       text-align: center;
       width: 100%;
       max-width: 420px;
-      position: relative;
-      overflow: hidden;
     }
 
     h2 {
@@ -83,27 +81,6 @@
       margin-top: 1em;
     }
 
-    /* Flores minimalistas decorativas */
-    .flower {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      opacity: 0.15;
-      z-index: 0;
-    }
-
-    .flower.top-left {
-      top: -20px;
-      left: -20px;
-      transform: rotate(-15deg);
-    }
-
-    .flower.bottom-right {
-      bottom: -20px;
-      right: -20px;
-      transform: rotate(10deg);
-    }
-
     @media (max-width: 420px) {
       .card {
         padding: 1.5rem;
@@ -117,9 +94,6 @@
 </head>
 <body>
   <div class="card">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Flower_simple.svg/1024px-Flower_simple.svg.png" alt="Flor minimalista" class="flower top-left">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Flower_simple.svg/1024px-Flower_simple.svg.png" alt="Flor minimalista" class="flower bottom-right">
-
     <h2>🎂 Aniversário da Ádria - 23 anos</h2>
     <div class="info">
       Dia <strong>07/06/2025</strong><br />
@@ -127,7 +101,7 @@
       Local: <strong>Casa Benjamin</strong>
     </div>
 
-  <form action="https://formspree.io/f/xqaqokbr" method="POST">
+    <form action="https://formspree.io/f/xqaqokbr" method="POST">
       <input type="text" name="nome" placeholder="Seu nome" required />
       <select name="presenca" required>
         <option value="">Você vai comparecer?</option>
@@ -141,4 +115,3 @@
   </div>
 </body>
 </html>
-
