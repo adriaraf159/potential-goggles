@@ -95,8 +95,8 @@
       }
     }
 
-    /* Balões - escondidos por padrão */
-    .baloes {
+    /* CONFETES */
+    .confetes {
       position: absolute;
       top: 0;
       left: 0;
@@ -105,57 +105,51 @@
       pointer-events: none;
       overflow: hidden;
       z-index: 1;
-      display: none;
     }
 
-    .balao {
+    .confete {
       position: absolute;
-      bottom: -150px;
-      width: 30px;
-      height: 40px;
-      background-color: var(--rosa-pastel);
-      border-radius: 50% 50% 50% 50%;
-      animation: subir 10s infinite ease-in;
-      opacity: 0.7;
+      width: 8px;
+      height: 8px;
+      background-color: red;
+      opacity: 0.8;
+      animation: cair 5s linear infinite;
     }
 
-    .balao:nth-child(odd) {
-      background-color: var(--azul-pastel);
+    .confete:nth-child(odd) {
+      background-color: var(--rosa-principal);
     }
 
-    .balao:nth-child(1) { left: 10%; animation-duration: 12s; }
-    .balao:nth-child(2) { left: 25%; animation-duration: 10s; }
-    .balao:nth-child(3) { left: 40%; animation-duration: 14s; }
-    .balao:nth-child(4) { left: 60%; animation-duration: 11s; }
-    .balao:nth-child(5) { left: 80%; animation-duration: 13s; }
-
-    .baloes.ativo {
-      display: block;
+    .confete:nth-child(even) {
+      background-color: var(--azul-destaque);
     }
 
-    @keyframes subir {
+    @keyframes cair {
       0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0.8;
       }
-      50% {
-        transform: translateY(-50vh) rotate(10deg);
-        opacity: 0.6;
-      }
       100% {
-        transform: translateY(-120vh) rotate(-10deg);
+        transform: translateY(120vh) rotate(360deg);
         opacity: 0;
       }
     }
   </style>
 </head>
 <body>
-  <div class="baloes" id="baloes">
-    <span class="balao"></span>
-    <span class="balao"></span>
-    <span class="balao"></span>
-    <span class="balao"></span>
-    <span class="balao"></span>
+  <div class="confetes">
+    <!-- 50 confetes -->
+    <script>
+      for (let i = 0; i < 50; i++) {
+        const confete = document.createElement('span');
+        confete.classList.add('confete');
+        confete.style.left = `${Math.random() * 100}%`;
+        confete.style.animationDuration = `${3 + Math.random() * 3}s`;
+        confete.style.width = `${6 + Math.random() * 6}px`;
+        confete.style.height = confete.style.width;
+        document.querySelector('.confetes').appendChild(confete);
+      }
+    </script>
   </div>
 
   <div class="card">
@@ -168,7 +162,7 @@
 
     <form action="https://formspree.io/f/xqaqokbr" method="POST">
       <input type="text" name="nome" placeholder="Seu nome" required />
-      <select name="presenca" id="presenca" required>
+      <select name="presenca" required>
         <option value="">Você vai comparecer?</option>
         <option value="Sim">Sim! Estarei lá. </option>
         <option value="Não">Infelizmente não. </option>
@@ -178,18 +172,5 @@
 
     <div class="footer">Te espero para comemorar 💗</div>
   </div>
-
-  <script>
-    const selectPresenca = document.getElementById('presenca');
-    const baloes = document.getElementById('baloes');
-
-    selectPresenca.addEventListener('change', function () {
-      if (this.value === 'Sim') {
-        baloes.classList.add('ativo');
-      } else {
-        baloes.classList.remove('ativo');
-      }
-    });
-  </script>
 </body>
 </html>
