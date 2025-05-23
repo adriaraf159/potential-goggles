@@ -8,9 +8,9 @@
   <style>
     :root {
       --rosa-pastel: #fcdde5;
-      --verde-pastel: #d5f5e3;
+      --azul-pastel: #dceeff;
       --rosa-principal: #f78fb3;
-      --verde-destaque: #8bc9a7;
+      --azul-destaque: #7fbcd2;
       --fundo: #fffdfd;
     }
 
@@ -22,12 +22,14 @@
 
     body {
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(135deg, var(--rosa-pastel), var(--verde-pastel));
+      background: linear-gradient(135deg, var(--rosa-pastel), var(--azul-pastel));
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 2rem;
       min-height: 100vh;
+      overflow: hidden;
+      position: relative;
     }
 
     .card {
@@ -38,6 +40,8 @@
       text-align: center;
       width: 100%;
       max-width: 420px;
+      position: relative;
+      z-index: 10;
     }
 
     h2 {
@@ -57,13 +61,13 @@
       width: 100%;
       padding: 12px;
       border-radius: 10px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--azul-pastel);
       margin-bottom: 1em;
       font-size: 1em;
     }
 
     button {
-      background-color: var(--verde-destaque);
+      background-color: var(--azul-destaque);
       color: white;
       border: none;
       cursor: pointer;
@@ -72,7 +76,7 @@
     }
 
     button:hover {
-      background-color: #6bbf99;
+      background-color: #6aaac1;
     }
 
     .footer {
@@ -90,9 +94,70 @@
         font-size: 1.4em;
       }
     }
+
+    /* Balões - escondidos por padrão */
+    .baloes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+      display: none;
+    }
+
+    .balao {
+      position: absolute;
+      bottom: -150px;
+      width: 30px;
+      height: 40px;
+      background-color: var(--rosa-pastel);
+      border-radius: 50% 50% 50% 50%;
+      animation: subir 10s infinite ease-in;
+      opacity: 0.7;
+    }
+
+    .balao:nth-child(odd) {
+      background-color: var(--azul-pastel);
+    }
+
+    .balao:nth-child(1) { left: 10%; animation-duration: 12s; }
+    .balao:nth-child(2) { left: 25%; animation-duration: 10s; }
+    .balao:nth-child(3) { left: 40%; animation-duration: 14s; }
+    .balao:nth-child(4) { left: 60%; animation-duration: 11s; }
+    .balao:nth-child(5) { left: 80%; animation-duration: 13s; }
+
+    .baloes.ativo {
+      display: block;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      50% {
+        transform: translateY(-50vh) rotate(10deg);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(-10deg);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="baloes" id="baloes">
+    <span class="balao"></span>
+    <span class="balao"></span>
+    <span class="balao"></span>
+    <span class="balao"></span>
+    <span class="balao"></span>
+  </div>
+
   <div class="card">
     <h2>🎂 Aniversário da Ádria - 23 anos</h2>
     <div class="info">
@@ -103,15 +168,28 @@
 
     <form action="https://formspree.io/f/xqaqokbr" method="POST">
       <input type="text" name="nome" placeholder="Seu nome" required />
-      <select name="presenca" required>
+      <select name="presenca" id="presenca" required>
         <option value="">Você vai comparecer?</option>
-        <option value="Sim">Sim! Estarei lá 💃</option>
-        <option value="Não">Infelizmente não 😢</option>
+        <option value="Sim">Sim! Estarei lá. </option>
+        <option value="Não">Infelizmente não. </option>
       </select>
       <button type="submit">Confirmar</button>
     </form>
 
     <div class="footer">Te espero para comemorar 💗</div>
   </div>
+
+  <script>
+    const selectPresenca = document.getElementById('presenca');
+    const baloes = document.getElementById('baloes');
+
+    selectPresenca.addEventListener('change', function () {
+      if (this.value === 'Sim') {
+        baloes.classList.add('ativo');
+      } else {
+        baloes.classList.remove('ativo');
+      }
+    });
+  </script>
 </body>
 </html>
